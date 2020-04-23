@@ -82,15 +82,15 @@ class Match(db.Model):
   player_3_id = Column('player_3_id', Integer, ForeignKey('players.id'), nullable = True)
   player_4_id = Column('player_4_id', Integer, ForeignKey('players.id'), nullable = True)
   matchfile = Column(String) # this is array of all points played converted to JSON object and saved as String
-  start_time = Column('start_time', db.DateTime, nullable = False)
-  end_time = Column('end_time', db.DateTime, nullable = True)
+  start_time = Column('start_time', DateTime, nullable = False)
+  end_time = Column('end_time', DateTime, nullable = True)
   type = Column(Integer) # singles = 1, doubles= 2, mixed = 3
   settings_id = Column('settings_id', Integer, ForeignKey('settings.id'), nullable = False)
   finish_state = Column(Integer) #not finished = 0, finished = 1,  urrendered = 2
 
   def __init__(self,
     player_1_id, player_2_id, player_3_id, player_4_id,
-    matchfile, start_time, end_time, type, settings_id, finish):
+    matchfile, start_time, end_time, type, settings_id, finish_state):
     self.player_1_id = player_1_id
     self.player_2_id = player_2_id
     self.player_3_id = player_3_id
@@ -99,8 +99,8 @@ class Match(db.Model):
     self.start_time = start_time
     self.end_time = end_time
     self.type = type
-    self.settings = settings_id
-    self.finish = finish
+    self.settings_id = settings_id
+    self.finish_state = finish_state
 
   def insert(self):
     db.session.add(self)
@@ -117,15 +117,15 @@ class Match(db.Model):
     return {
       'id': self.id,
       'player_1_id': self.player_1_id,
-      'player_2_id': self.player_1_id,
-      'player_3_id': self.player_1_id,
-      'player_4_id': self.player_1_id,
+      'player_2_id': self.player_2_id,
+      'player_3_id': self.player_3_id,
+      'player_4_id': self.player_4_id,
       'matchfile': self.matchfile,
       'start_time': self.start_time,
       'end_time': self.end_time,
       'type': self.type,
-      'settings': self.settings,
-      'finish': self.finish,
+      'settings_id': self.settings_id,
+      'finish_state': self.finish_state,
     }
 
 '''
@@ -136,7 +136,7 @@ class Settings(db.Model):
   __tablename__ = 'settings'
 
   id = Column(Integer, primary_key=True)
-  number_of_gamest_to_win = Column('number_of_gamest_to_win', Integer, nullable = False)
+  number_of_games_to_win = Column('number_of_games_to_win', Integer, nullable = False)
   number_of_sets_to_win = Column('number_of_sets_to_win', Integer, nullable = False)
   advantage = Column('advantage', Boolean,  nullable = False)
   tiebreak = Column('tiebreak', Boolean,  nullable = False)
@@ -147,9 +147,9 @@ class Settings(db.Model):
 
 
   def __init__(self,
-    number_of_gamest_to_win, number_of_sets_to_win, advantage, tiebreak, points_in_tiebreak,
+    number_of_games_to_win, number_of_sets_to_win, advantage, tiebreak, points_in_tiebreak,
     play_last_set_as_tiebreak, serve_locked, tiebreak_difference):
-    self.number_of_gamest_to_win = number_of_gamest_to_win
+    self.number_of_games_to_win = number_of_games_to_win
     self.number_of_sets_to_win = number_of_sets_to_win
     self.advantage = advantage
     self.tiebreak = tiebreak
@@ -172,7 +172,7 @@ class Settings(db.Model):
   def format(self):
     return {
       'id': self.id,
-      'number_of_gamest_to_win': self.number_of_gamest_to_win,
+      'number_of_games_to_win': self.number_of_games_to_win,
       'number_of_sets_to_win': self.number_of_sets_to_win,
       'advantage': self.advantage,
       'tiebreak': self.tiebreak,
