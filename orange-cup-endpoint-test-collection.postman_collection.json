@@ -1,0 +1,1060 @@
+{
+	"info": {
+		"_postman_id": "5ea62c39-4ddb-47a7-a346-5a60cffd4fb5",
+		"name": "orange-cup-endpoint-test-collection",
+		"description": "Colection of tests to test endpoints for project Orange-cup",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Public",
+			"item": [
+				{
+					"name": "http://127.0.0.1:5000/players",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "20cf05ae-0a73-4d4d-af75-5d18131e46ea",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"value contains players array\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.players).to.be.an('array')",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5000/players",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"players"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:5000/players/create",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a4f4509a-056d-442c-8809-c8022ff68a2c",
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"name\":\"FirstName\",\n\"surname\":\"Surname\",\n\"nationality\":\"DE\",\n\"year\":1981,\n\"gender\":\"male\",\n\"weight\":80,\n\"height\":180\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/players/create",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"players",
+								"create"
+							]
+						},
+						"description": "Test creating new Player"
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:5000/players/1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "37185c11-7a72-4a7a-9b12-181262dc020a",
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5000/players/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"players",
+								"1"
+							]
+						},
+						"description": "Deleting player with id from database"
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:5000/settings/create",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "1ddecc0d-5c27-4b25-99ce-5631bc980180",
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"number_of_games_to_win\":6,\n\"number_of_sets_to_win\":3,\n\"advantage\":true,\n\"tiebreak\":true,\n\"points_in_tiebreak\":6,\n\"play_last_set_as_tiebreak\":false,\n\"serve_locked\":true,\n\"tiebreak_difference\":2\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/settings/create",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"settings",
+								"create"
+							]
+						},
+						"description": "Create settings for match in database"
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:5000/settings/1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5ea57f97-8839-4a37-9a26-eb950bfedd2d",
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5000/settings/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"settings",
+								"1"
+							]
+						},
+						"description": "Deleting settings from database"
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:5000/matches/create",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b25b7761-f1c9-4da6-9f43-01b6cc38c433",
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"player_1_id\":2,\n\"player_2_id\":3,\n\"player_3_id\":null,\n\"player_4_id\":null,\n\"matchfile\":\"fake json string for testing\",\n\"start_time\":\"2016-06-22 19:10:25-07\",\n\"end_time\":null,\n\"type\":1,\n\"settings_id\":2,\n\"finish_state\":0\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/matches/create",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"matches",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:5000/matches/1",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5000/matches/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"matches",
+								"1"
+							]
+						},
+						"description": "Deleting match from database"
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:5000/players/3/matches",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e70ad474-8a6c-431e-98f0-e62616c281e2",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"value contains matches array\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.matches).to.be.an('array')",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5000/players/2/matches",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"players",
+								"2",
+								"matches"
+							]
+						},
+						"description": "Finding all matches played by player with player ID 3"
+					},
+					"response": []
+				}
+			],
+			"description": "No permissions",
+			"auth": {
+				"type": "noauth"
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "dd6120ad-fec9-401a-94e2-8126e5f4381c",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "96a2f7ce-65e5-4c9a-b4e2-ef67f4a8e87e",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "http://127.0.0.1:5000/players",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5000/players",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"players"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:5000/players/create",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "79808d94-4493-4b05-a895-f523738f8d1c",
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"name\":\"FirstName\",\n\"surname\":\"Surname\",\n\"nationality\":\"DE\",\n\"year\":1981,\n\"gender\":\"male\",\n\"weight\":80,\n\"height\":180\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/players/create",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"players",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:5000/players/1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a50551f2-6496-4df0-bf27-348a7695a9be",
+								"exec": [
+									"pm.test(\"Status code is 403\", function () {",
+									"    pm.response.to.have.status(403);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5000/players/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"players",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:5000/settings/create",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4e4927f6-3b71-4ce4-87fc-7b512bfb9b65",
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"number_of_games_to_win\":6,\n\"number_of_sets_to_win\":3,\n\"advantage\":true,\n\"tiebreak\":true,\n\"points_in_tiebreak\":6,\n\"play_last_set_as_tiebreak\":false,\n\"serve_locked\":true,\n\"tiebreak_difference\":2\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/settings/create",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"settings",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:5000/settings/1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "407f23bc-d80a-4d66-8f3c-694f336548b6",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5000/settings/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"settings",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:5000/matches/create",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b25b7761-f1c9-4da6-9f43-01b6cc38c433",
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"player_1_id\":2,\n\"player_2_id\":3,\n\"player_3_id\":null,\n\"player_4_id\":null,\n\"matchfile\":\"fake json string for testing\",\n\"start_time\":\"2016-06-22 19:10:25-07\",\n\"end_time\":null,\n\"type\":1,\n\"settings_id\":2,\n\"finish_state\":0\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/matches/create",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"matches",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:5000/matches/1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "46f737bb-e4d1-41b7-b48e-d4c6e5346794",
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5000/matches/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"matches",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:5000/players/3/matches",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e70ad474-8a6c-431e-98f0-e62616c281e2",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"value contains matches array\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.matches).to.be.an('array')",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5000/players/2/matches",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"players",
+								"2",
+								"matches"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Regular user with permissions:read:matches, write:matches, read:players, write:players, read:settings",
+			"auth": {
+				"type": "oauth2",
+				"oauth2": [
+					{
+						"key": "accessToken",
+						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ikxza1ZQMGtWOXpMSGhUU1pzSDRXeCJ9.eyJpc3MiOiJodHRwczovL29yYW5nZWN1cC5hdXRoMC5jb20vIiwic3ViIjoiZ29vZ2xlLW9hdXRoMnwxMTY5MTQ1MDM2MzM4MDk2OTU1MzciLCJhdWQiOlsib3JhbmdlIiwiaHR0cHM6Ly9vcmFuZ2VjdXAuYXV0aDAuY29tL3VzZXJpbmZvIl0sImlhdCI6MTU4NzcwOTE4OSwiZXhwIjoxNTg3NzE2Mzg5LCJhenAiOiJmWFdmNXJlTmx5TVNncTRUanhRMjN2dmh0WUZyWnpzViIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwiLCJwZXJtaXNzaW9ucyI6WyJyZWFkOm1hdGNoZXMiLCJyZWFkOnBsYXllcnMiLCJyZWFkOnNldHRpbmdzIiwid3JpdGU6bWF0Y2hlcyIsIndyaXRlOnBsYXllcnMiXX0.HZwEvDNqBXWnJPnUEdD1jmAa4tgdsHtBoL5vcUfxUhL1k8RuVZkBA4U6gU8ESNbIdE0SsxEJhwCE5S6e1Ywnufhie9oVZUG8XvMB7lw30oymaWnISYjGONsaIdgD4EfWuTcsgb808V2QnFzjF1pT1EEtLbuUMzniJWk0KX1Lplal3lzKvy-Q0fEdv5dwQ1w5KOk4tqOpaV3mxCQ4fmNZPEMSZfOc0Jj7tfH_UubbnevZ-S-N3dSV1uHLm5vxM6_lHH2mdhi0vuF4NvVcqlf7KZe3xwP3U3w7gWrXUdQIeYy6ukkwzMjKlqS2jz493GPj5KoR_pyRmpE3IEQpuDDiDQ",
+						"type": "string"
+					},
+					{
+						"key": "addTokenTo",
+						"value": "header",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "9935d21b-bf51-442f-9dde-20c5faab2a3d",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "1e8ff595-61ff-495f-849a-101c700dc579",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "http://127.0.0.1:5000/players",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "20cf05ae-0a73-4d4d-af75-5d18131e46ea",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"value contains players array\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.players).to.be.an('array')",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5000/players",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"players"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:5000/players/create",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "79808d94-4493-4b05-a895-f523738f8d1c",
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"name\":\"FirstName\",\n\"surname\":\"Surname\",\n\"nationality\":\"DE\",\n\"year\":1981,\n\"gender\":\"male\",\n\"weight\":80,\n\"height\":180\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/players/create",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"players",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:5000/players/1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a50551f2-6496-4df0-bf27-348a7695a9be",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5000/players/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"players",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:5000/settings/create",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4e4927f6-3b71-4ce4-87fc-7b512bfb9b65",
+								"exec": [
+									"pm.test(\"Status code is 403\", function () {",
+									"    pm.response.to.have.status(403);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"number_of_games_to_win\":6,\n\"number_of_sets_to_win\":3,\n\"advantage\":true,\n\"tiebreak\":true,\n\"points_in_tiebreak\":6,\n\"play_last_set_as_tiebreak\":false,\n\"serve_locked\":true,\n\"tiebreak_difference\":2\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/settings/create",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"settings",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:5000/settings/1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "407f23bc-d80a-4d66-8f3c-694f336548b6",
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5000/settings/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"settings",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:5000/matches/create",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b25b7761-f1c9-4da6-9f43-01b6cc38c433",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"player_1_id\":2,\n\"player_2_id\":3,\n\"player_3_id\":null,\n\"player_4_id\":null,\n\"matchfile\":\"fake json string for testing\",\n\"start_time\":\"2016-06-22 19:10:25-07\",\n\"end_time\":null,\n\"type\":1,\n\"settings_id\":2,\n\"finish_state\":0\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/matches/create",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"matches",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:5000/matches/1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "46f737bb-e4d1-41b7-b48e-d4c6e5346794",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5000/matches/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"matches",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:5000/players/3/matches",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e70ad474-8a6c-431e-98f0-e62616c281e2",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"value contains matches array\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.matches).to.be.an('array')",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5000/players/2/matches",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"players",
+								"2",
+								"matches"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Admin user with all permissions",
+			"auth": {
+				"type": "oauth2",
+				"oauth2": [
+					{
+						"key": "accessToken",
+						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ikxza1ZQMGtWOXpMSGhUU1pzSDRXeCJ9.eyJpc3MiOiJodHRwczovL29yYW5nZWN1cC5hdXRoMC5jb20vIiwic3ViIjoiZ29vZ2xlLW9hdXRoMnwxMTE3OTMyNzA5MTk5MDIxODI0MzciLCJhdWQiOlsib3JhbmdlIiwiaHR0cHM6Ly9vcmFuZ2VjdXAuYXV0aDAuY29tL3VzZXJpbmZvIl0sImlhdCI6MTU4NzcwNDk4OSwiZXhwIjoxNTg3NzEyMTg5LCJhenAiOiJmWFdmNXJlTmx5TVNncTRUanhRMjN2dmh0WUZyWnpzViIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6bWF0Y2hlcyIsImRlbGV0ZTpwbGF5ZXJzIiwiZGVsZXRlOnNldHRpbmdzIiwicmVhZDptYXRjaGVzIiwicmVhZDpwbGF5ZXJzIiwicmVhZDpzZXR0aW5ncyIsIndyaXRlOm1hdGNoZXMiLCJ3cml0ZTpwbGF5ZXJzIiwid3JpdGU6c2V0dGluZ3MiXX0.jmce8wwNdsNo3xWSdhvqHEyKsbWYxNpMzzCbCswnhawRxDhEMHk-TifslD3jMwcs77X_89isVsed4upT2yQtSu_xpK2GskInTdtxffycoctD-d9AFpu67NphPtZDUZjw_ay0hhYaLrmvLBCelTkS6u4P2TuxpeL3rI5nb_zUhFaqwsB8a4kkUvAk0UOhX1jxLCXxyifjZH4KtQ7MtkFpG3hZ842QYlo12wv5N3frfenFlVHNQMGC2Y2Jr1dAqD_RUQDYjE0babTbukSxjRoYXLmx2okrU3K-o--EoarztWOgFjSSq_b6LkrZHiSBnoAkx7YNU3nC9FIRpbifCDx6cA",
+						"type": "string"
+					},
+					{
+						"key": "addTokenTo",
+						"value": "header",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "d12f7f2c-a03e-42cf-83c1-13036be98eef",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "a036b297-840d-458e-bbd7-ac92262fdb8f",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

@@ -7,6 +7,7 @@ import json
 from models import setup_db, Player, Match, Settings
 from sqlalchemy.orm import relationship
 from sqlalchemy import or_
+from auth.auth import AuthError, requires_auth
 
 db = SQLAlchemy()
 migrate = Migrate()
@@ -53,7 +54,8 @@ def create_app(test_config=None):
   gender, weight, height
   '''
   @app.route('/players/create', methods=['POST'])
-  def create_player():
+  @requires_auth('write:players')
+  def create_player(payload):
     error = False
     try:
         data = json.loads(request.data.decode('utf-8'))
@@ -88,7 +90,8 @@ def create_app(test_config=None):
   Endpoint to DELETE player using a player ID.
   '''
   @app.route('/players/<int:player_id>', methods = ['DELETE'])
-  def delete_player(player_id):
+  @requires_auth('delete:players')
+  def delete_player(payload, player_id):
       player = Player.query.filter(Player.id==player_id).one_or_none()
 
       if player == None:
@@ -124,7 +127,8 @@ def create_app(test_config=None):
   tiebreak_difference
   '''
   @app.route('/settings/create', methods=['POST'])
-  def create_settings():
+  @requires_auth('write:settings')
+  def create_settings(payload):
     error = False
     try:
       data = json.loads(request.data.decode('utf-8'))
@@ -164,7 +168,8 @@ def create_app(test_config=None):
   Endpoint to DELETE settings using settings ID.
   '''
   @app.route('/settings/<int:settings_id>', methods = ['DELETE'])
-  def delete_settings(settings_id):
+  @requires_auth('write:settings')
+  def delete_settings(payload, settings_id):
       settings = Settings.query.filter(Settings.id==settings_id).one_or_none()
 
       if settings == None:
@@ -207,7 +212,8 @@ def create_app(test_config=None):
 
   '''
   @app.route('/matches/create', methods=['POST'])
-  def create_match():
+  @requires_auth('write:matches')
+  def create_match(payload):
       error = False
       try:
           data = json.loads(request.data.decode('utf-8'))
@@ -246,7 +252,8 @@ def create_app(test_config=None):
   Endpoint to DELETE match using a match ID.
   '''
   @app.route('/matches/<int:match_id>', methods = ['DELETE'])
-  def delete_match(match_id):
+  @requires_auth('delete:matches')
+  def delete_match(payload, match_id):
       match = Match.query.filter(Match.id==match_id).one_or_none()
 
       if match == None:
@@ -342,5 +349,18 @@ def create_app(test_config=None):
     "error": 500,
     "message": "Internal Server Error"
     }), 500
+
+  '''
+  @TODO implement error handler for AuthError
+    error handler should conform to general task above
+  '''
+  @app.errorhandler(AuthError)
+  def handle_auth_error(error):
+      return jsonify({
+          "success": False,
+          "error": error.status_code,
+          'message': error.error
+      }), error.status_code
+
 
   return app
