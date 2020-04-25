@@ -3,10 +3,7 @@ from sqlalchemy import Column, String, Integer, create_engine, DateTime, Foreign
 from flask_sqlalchemy import SQLAlchemy
 import json
 
-DATABASE_PASSWORD = os.environ.get('DATABASE_PASSWORD', 'postgres')
-
-database_name = "orange"
-database_path = "postgres://{}:{}@{}/{}".format('postgres', DATABASE_PASSWORD, 'localhost:5432', database_name)
+database_path = "postgres://qxmvvnhnvvwwht:1534ba9ea8c11201c85a8011fd8294982203fdcb42c7e90b83b5ec4343f71ce8@ec2-23-20-129-146.compute-1.amazonaws.com:5432/d75srnlurvco5f"
 
 db = SQLAlchemy()
 
@@ -15,7 +12,7 @@ setup_db(app)
     binds a flask application and a SQLAlchemy service
 '''
 def setup_db(app, database_path=database_path):
-    app.config["SQLALCHEMY_DATABASE_URI"] = "postgres://qxmvvnhnvvwwht:1534ba9ea8c11201c85a8011fd8294982203fdcb42c7e90b83b5ec4343f71ce8@ec2-23-20-129-146.compute-1.amazonaws.com:5432/d75srnlurvco5f"
+    app.config["SQLALCHEMY_DATABASE_URI"] = database_path
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
     db.app = app
     db.init_app(app)

@@ -38,6 +38,16 @@ def create_app(test_config=None):
       response.headers.add('Access-Control-Allow-Methods', 'GET,PATCH,POST,DELETE,OPTIONS')
       return response
 
+  @app.route('/')
+  def get_index_page():
+      return jsonify({
+        'success': True,
+        'welcome_message': "Hooray, Welocome to Orange Cup",
+        'what_next': "Go to Github and read Readme.txt file or try some public endpoints",
+        'public endpoints': ["/players", "/matches"],
+        'git_url':"https://github.com/akristic/orange-cup"
+      })
+
   @app.route('/players')
   def get_players():
       players = Player.query.all()
@@ -84,7 +94,54 @@ def create_app(test_config=None):
         'player': newPlayer.format(),
         'total_players': len(Player.query.all())
         })
+  '''
+  Endpoint to UPDATE player using a player ID.
+  '''
+  @app.route('/players/<int:player_id>', methods = ['PATCH'])
+  @requires_auth('write:players')
+  def update_player(payload, player_id):
+      player = Player.query.filter(Player.id==player_id).one_or_none()
+      if player == None:
+          abort(404)
+      else:
+          data = json.loads(request.data.decode('utf-8'))
 
+          try:
+              player.name = data['name']
+          except:
+              pass
+          try:
+              player.surname = data['surname']
+          except:
+              pass
+          try:
+              player.nationality = data['nationality']
+          except:
+              pass
+          try:
+              player.year = data['year']
+          except:
+              pass
+          try:
+              player.gender = data['gender']
+          except:
+              pass
+          try:
+              player.weight = data['weight']
+          except:
+              pass
+          try:
+              player.height = data['height']
+          except:
+              pass
+
+          player.update()
+          
+          return jsonify({
+          'success': True,
+          'player_id': player_id,
+          'message': 'Player updated successfully'
+          })
 
   '''
   Endpoint to DELETE player using a player ID.
@@ -109,9 +166,10 @@ def create_app(test_config=None):
   for all available settings.
   '''
   @app.route('/settings')
-  def get_settings():
+  @requires_auth('read:settings')
+  def get_settings(payload):
       settings = Settings.query.all()
-      formated_settings =  [set.format() for set in settings]
+      formated_settings = [set.format() for set in settings]
 
       return jsonify({
         'success': True,

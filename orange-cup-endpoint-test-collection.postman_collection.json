@@ -10,7 +10,7 @@
 			"name": "Public",
 			"item": [
 				{
-					"name": "http://127.0.0.1:5000/players",
+					"name": "/players",
 					"event": [
 						{
 							"listen": "test",
@@ -34,15 +34,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:5000/players",
-							"protocol": "http",
+							"raw": "https://orangecup.herokuapp.com/players",
+							"protocol": "https",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"orangecup",
+								"herokuapp",
+								"com"
 							],
-							"port": "5000",
 							"path": [
 								"players"
 							]
@@ -51,7 +49,7 @@
 					"response": []
 				},
 				{
-					"name": "http://127.0.0.1:5000/players/create",
+					"name": "/players/create",
 					"event": [
 						{
 							"listen": "test",
@@ -74,15 +72,13 @@
 							"raw": "{\n\"name\":\"FirstName\",\n\"surname\":\"Surname\",\n\"nationality\":\"DE\",\n\"year\":1981,\n\"gender\":\"male\",\n\"weight\":80,\n\"height\":180\n}"
 						},
 						"url": {
-							"raw": "http://127.0.0.1:5000/players/create",
-							"protocol": "http",
+							"raw": "https://orangecup.herokuapp.com/players/create",
+							"protocol": "https",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"orangecup",
+								"herokuapp",
+								"com"
 							],
-							"port": "5000",
 							"path": [
 								"players",
 								"create"
@@ -93,7 +89,7 @@
 					"response": []
 				},
 				{
-					"name": "http://127.0.0.1:5000/players/1",
+					"name": "/players/1",
 					"event": [
 						{
 							"listen": "test",
@@ -112,15 +108,13 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:5000/players/1",
-							"protocol": "http",
+							"raw": "https://orangecup.herokuapp.com/players/1",
+							"protocol": "https",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"orangecup",
+								"herokuapp",
+								"com"
 							],
-							"port": "5000",
 							"path": [
 								"players",
 								"1"
@@ -131,7 +125,7 @@
 					"response": []
 				},
 				{
-					"name": "http://127.0.0.1:5000/settings/create",
+					"name": "/settings/create",
 					"event": [
 						{
 							"listen": "test",
@@ -154,15 +148,13 @@
 							"raw": "{\n\"number_of_games_to_win\":6,\n\"number_of_sets_to_win\":3,\n\"advantage\":true,\n\"tiebreak\":true,\n\"points_in_tiebreak\":6,\n\"play_last_set_as_tiebreak\":false,\n\"serve_locked\":true,\n\"tiebreak_difference\":2\n}"
 						},
 						"url": {
-							"raw": "http://127.0.0.1:5000/settings/create",
-							"protocol": "http",
+							"raw": "https://orangecup.herokuapp.com/settings/create",
+							"protocol": "https",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"orangecup",
+								"herokuapp",
+								"com"
 							],
-							"port": "5000",
 							"path": [
 								"settings",
 								"create"
@@ -173,7 +165,7 @@
 					"response": []
 				},
 				{
-					"name": "http://127.0.0.1:5000/settings/1",
+					"name": "settings/1",
 					"event": [
 						{
 							"listen": "test",
@@ -192,15 +184,13 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:5000/settings/1",
-							"protocol": "http",
+							"raw": "https://orangecup.herokuapp.com/settings/1",
+							"protocol": "https",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"orangecup",
+								"herokuapp",
+								"com"
 							],
-							"port": "5000",
 							"path": [
 								"settings",
 								"1"
@@ -211,7 +201,7 @@
 					"response": []
 				},
 				{
-					"name": "http://127.0.0.1:5000/matches/create",
+					"name": "/matches/create",
 					"event": [
 						{
 							"listen": "test",
@@ -234,15 +224,13 @@
 							"raw": "{\n\"player_1_id\":2,\n\"player_2_id\":3,\n\"player_3_id\":null,\n\"player_4_id\":null,\n\"matchfile\":\"fake json string for testing\",\n\"start_time\":\"2016-06-22 19:10:25-07\",\n\"end_time\":null,\n\"type\":1,\n\"settings_id\":2,\n\"finish_state\":0\n}"
 						},
 						"url": {
-							"raw": "http://127.0.0.1:5000/matches/create",
-							"protocol": "http",
+							"raw": "https://orangecup.herokuapp.com/matches/create",
+							"protocol": "https",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"orangecup",
+								"herokuapp",
+								"com"
 							],
-							"port": "5000",
 							"path": [
 								"matches",
 								"create"
@@ -252,20 +240,32 @@
 					"response": []
 				},
 				{
-					"name": "http://127.0.0.1:5000/matches/1",
+					"name": "/matches/1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a6c88e76-f395-43c5-800e-746ce0652165",
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:5000/matches/1",
-							"protocol": "http",
+							"raw": "https://orangecup.herokuapp.com/matches/1",
+							"protocol": "https",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"orangecup",
+								"herokuapp",
+								"com"
 							],
-							"port": "5000",
 							"path": [
 								"matches",
 								"1"
@@ -276,7 +276,7 @@
 					"response": []
 				},
 				{
-					"name": "http://127.0.0.1:5000/players/3/matches",
+					"name": "/players/3/matches",
 					"event": [
 						{
 							"listen": "test",
@@ -300,7 +300,152 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:5000/players/2/matches",
+							"raw": "https://orangecup.herokuapp.com/players/2/matches",
+							"protocol": "https",
+							"host": [
+								"orangecup",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"players",
+								"2",
+								"matches"
+							]
+						},
+						"description": "Finding all matches played by player with player ID 3"
+					},
+					"response": []
+				},
+				{
+					"name": "/settings",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "20cf05ae-0a73-4d4d-af75-5d18131e46ea",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"value contains players array\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.players).to.be.an('array')",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://orangecup.herokuapp.com/settings",
+							"protocol": "https",
+							"host": [
+								"orangecup",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"settings"
+							]
+						},
+						"description": "Get settings form database"
+					},
+					"response": []
+				},
+				{
+					"name": "/players/search",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "20cf05ae-0a73-4d4d-af75-5d18131e46ea",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"value contains players array\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.players).to.be.an('array')",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"search_term\":\"kri\"}"
+						},
+						"url": {
+							"raw": "https://orangecup.herokuapp.com/players/search",
+							"protocol": "https",
+							"host": [
+								"orangecup",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"players",
+								"search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/players",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://orangecup.herokuapp.com/players",
+							"protocol": "https",
+							"host": [
+								"orangecup",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"players"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/players/2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a4f4509a-056d-442c-8809-c8022ff68a2c",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"name\":\"Vedrana\",\n\"year\":1988\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/players/1",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -311,11 +456,9 @@
 							"port": "5000",
 							"path": [
 								"players",
-								"2",
-								"matches"
+								"1"
 							]
-						},
-						"description": "Finding all matches played by player with player ID 3"
+						}
 					},
 					"response": []
 				}
@@ -352,20 +495,18 @@
 			"name": "User",
 			"item": [
 				{
-					"name": "http://127.0.0.1:5000/players",
+					"name": "/players",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:5000/players",
-							"protocol": "http",
+							"raw": "https://orangecup.herokuapp.com/players",
+							"protocol": "https",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"orangecup",
+								"herokuapp",
+								"com"
 							],
-							"port": "5000",
 							"path": [
 								"players"
 							]
@@ -374,7 +515,7 @@
 					"response": []
 				},
 				{
-					"name": "http://127.0.0.1:5000/players/create",
+					"name": "/players/create",
 					"event": [
 						{
 							"listen": "test",
@@ -416,7 +557,7 @@
 					"response": []
 				},
 				{
-					"name": "http://127.0.0.1:5000/players/1",
+					"name": "/players/1",
 					"event": [
 						{
 							"listen": "test",
@@ -435,25 +576,23 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:5000/players/1",
-							"protocol": "http",
+							"raw": "https://orangecup.herokuapp.com/players/2",
+							"protocol": "https",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"orangecup",
+								"herokuapp",
+								"com"
 							],
-							"port": "5000",
 							"path": [
 								"players",
-								"1"
+								"2"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "http://127.0.0.1:5000/settings/create",
+					"name": "/settings/create",
 					"event": [
 						{
 							"listen": "test",
@@ -476,15 +615,13 @@
 							"raw": "{\n\"number_of_games_to_win\":6,\n\"number_of_sets_to_win\":3,\n\"advantage\":true,\n\"tiebreak\":true,\n\"points_in_tiebreak\":6,\n\"play_last_set_as_tiebreak\":false,\n\"serve_locked\":true,\n\"tiebreak_difference\":2\n}"
 						},
 						"url": {
-							"raw": "http://127.0.0.1:5000/settings/create",
-							"protocol": "http",
+							"raw": "https://orangecup.herokuapp.com/settings/create",
+							"protocol": "https",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"orangecup",
+								"herokuapp",
+								"com"
 							],
-							"port": "5000",
 							"path": [
 								"settings",
 								"create"
@@ -494,15 +631,15 @@
 					"response": []
 				},
 				{
-					"name": "http://127.0.0.1:5000/settings/1",
+					"name": "/settings/1",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
-								"id": "407f23bc-d80a-4d66-8f3c-694f336548b6",
+								"id": "89f18716-2c7d-4da6-b6b4-78d57b0fafe9",
 								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
+									"pm.test(\"Status code is 403\", function () {",
+									"    pm.response.to.have.status(403);",
 									"});"
 								],
 								"type": "text/javascript"
@@ -513,15 +650,13 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:5000/settings/1",
-							"protocol": "http",
+							"raw": "https://orangecup.herokuapp.com/settings/1",
+							"protocol": "https",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"orangecup",
+								"herokuapp",
+								"com"
 							],
-							"port": "5000",
 							"path": [
 								"settings",
 								"1"
@@ -531,7 +666,7 @@
 					"response": []
 				},
 				{
-					"name": "http://127.0.0.1:5000/matches/create",
+					"name": "/matches/create",
 					"event": [
 						{
 							"listen": "test",
@@ -554,15 +689,13 @@
 							"raw": "{\n\"player_1_id\":2,\n\"player_2_id\":3,\n\"player_3_id\":null,\n\"player_4_id\":null,\n\"matchfile\":\"fake json string for testing\",\n\"start_time\":\"2016-06-22 19:10:25-07\",\n\"end_time\":null,\n\"type\":1,\n\"settings_id\":2,\n\"finish_state\":0\n}"
 						},
 						"url": {
-							"raw": "http://127.0.0.1:5000/matches/create",
-							"protocol": "http",
+							"raw": "https://orangecup.herokuapp.com/matches/create",
+							"protocol": "https",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"orangecup",
+								"herokuapp",
+								"com"
 							],
-							"port": "5000",
 							"path": [
 								"matches",
 								"create"
@@ -572,7 +705,7 @@
 					"response": []
 				},
 				{
-					"name": "http://127.0.0.1:5000/matches/1",
+					"name": "/matches/1",
 					"event": [
 						{
 							"listen": "test",
@@ -591,15 +724,13 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:5000/matches/1",
-							"protocol": "http",
+							"raw": "https://orangecup.herokuapp.com/matches/1",
+							"protocol": "https",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"orangecup",
+								"herokuapp",
+								"com"
 							],
-							"port": "5000",
 							"path": [
 								"matches",
 								"1"
@@ -609,7 +740,7 @@
 					"response": []
 				},
 				{
-					"name": "http://127.0.0.1:5000/players/3/matches",
+					"name": "/players/3/matches",
 					"event": [
 						{
 							"listen": "test",
@@ -633,7 +764,146 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:5000/players/2/matches",
+							"raw": "https://orangecup.herokuapp.com/players/2/matches",
+							"protocol": "https",
+							"host": [
+								"orangecup",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"players",
+								"2",
+								"matches"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/settings",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "20cf05ae-0a73-4d4d-af75-5d18131e46ea",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://orangecup.herokuapp.com/settings",
+							"protocol": "https",
+							"host": [
+								"orangecup",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"settings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/players/search",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "20cf05ae-0a73-4d4d-af75-5d18131e46ea",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"value contains players array\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.players).to.be.an('array')",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"search_term\":\"kri\"}"
+						},
+						"url": {
+							"raw": "https://orangecup.herokuapp.com/players/search",
+							"protocol": "https",
+							"host": [
+								"orangecup",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"players",
+								"search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/players",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://orangecup.herokuapp.com/players",
+							"protocol": "https",
+							"host": [
+								"orangecup",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"players"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/players/2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a4f4509a-056d-442c-8809-c8022ff68a2c",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"name\":\"Vedrana\",\n\"year\":1988\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/players/1",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -644,8 +914,7 @@
 							"port": "5000",
 							"path": [
 								"players",
-								"2",
-								"matches"
+								"1"
 							]
 						}
 					},
@@ -658,7 +927,7 @@
 				"oauth2": [
 					{
 						"key": "accessToken",
-						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ikxza1ZQMGtWOXpMSGhUU1pzSDRXeCJ9.eyJpc3MiOiJodHRwczovL29yYW5nZWN1cC5hdXRoMC5jb20vIiwic3ViIjoiZ29vZ2xlLW9hdXRoMnwxMTY5MTQ1MDM2MzM4MDk2OTU1MzciLCJhdWQiOlsib3JhbmdlIiwiaHR0cHM6Ly9vcmFuZ2VjdXAuYXV0aDAuY29tL3VzZXJpbmZvIl0sImlhdCI6MTU4NzcwOTE4OSwiZXhwIjoxNTg3NzE2Mzg5LCJhenAiOiJmWFdmNXJlTmx5TVNncTRUanhRMjN2dmh0WUZyWnpzViIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwiLCJwZXJtaXNzaW9ucyI6WyJyZWFkOm1hdGNoZXMiLCJyZWFkOnBsYXllcnMiLCJyZWFkOnNldHRpbmdzIiwid3JpdGU6bWF0Y2hlcyIsIndyaXRlOnBsYXllcnMiXX0.HZwEvDNqBXWnJPnUEdD1jmAa4tgdsHtBoL5vcUfxUhL1k8RuVZkBA4U6gU8ESNbIdE0SsxEJhwCE5S6e1Ywnufhie9oVZUG8XvMB7lw30oymaWnISYjGONsaIdgD4EfWuTcsgb808V2QnFzjF1pT1EEtLbuUMzniJWk0KX1Lplal3lzKvy-Q0fEdv5dwQ1w5KOk4tqOpaV3mxCQ4fmNZPEMSZfOc0Jj7tfH_UubbnevZ-S-N3dSV1uHLm5vxM6_lHH2mdhi0vuF4NvVcqlf7KZe3xwP3U3w7gWrXUdQIeYy6ukkwzMjKlqS2jz493GPj5KoR_pyRmpE3IEQpuDDiDQ",
+						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ikxza1ZQMGtWOXpMSGhUU1pzSDRXeCJ9.eyJpc3MiOiJodHRwczovL29yYW5nZWN1cC5hdXRoMC5jb20vIiwic3ViIjoiZ29vZ2xlLW9hdXRoMnwxMTY5MTQ1MDM2MzM4MDk2OTU1MzciLCJhdWQiOlsib3JhbmdlIiwiaHR0cHM6Ly9vcmFuZ2VjdXAuYXV0aDAuY29tL3VzZXJpbmZvIl0sImlhdCI6MTU4NzgwNDkwMywiZXhwIjoxNTg3ODEyMTAzLCJhenAiOiJmWFdmNXJlTmx5TVNncTRUanhRMjN2dmh0WUZyWnpzViIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwiLCJwZXJtaXNzaW9ucyI6WyJyZWFkOm1hdGNoZXMiLCJyZWFkOnBsYXllcnMiLCJyZWFkOnNldHRpbmdzIiwid3JpdGU6bWF0Y2hlcyIsIndyaXRlOnBsYXllcnMiXX0.BYcNJKN0ewvyDdheLX8lScQIET3_OCa-hlk_oRbKj8jtov4w02pp86rOTFvMYlm4roFj9KuHFiGBwXTBB5tYVMJS9FYcxMzrvq5g0-pKHfMeCkdPY14UQT92ZSKIY1yq9dVR_2u6xAIBWPbYsCsW8_SmveurMGCVjtiTdK5WlxELJzk5cGxs7wFmw9-8WwDe2cLr7TBNOnCNQ0qkGqbzB__uoSLtzsWtv-_kCrT3qt3vtEc4EW_vFN5CdyOmLPdcUWphKqKmklC97QlyfiXptkeHhoiHgigvMm8pVRM9Bcfc_UAbtRaIkpCN3efC2R2a_e3arOpki5sKVefd_jybtg",
 						"type": "string"
 					},
 					{
@@ -696,7 +965,7 @@
 			"name": "Admin",
 			"item": [
 				{
-					"name": "http://127.0.0.1:5000/players",
+					"name": "/players",
 					"event": [
 						{
 							"listen": "test",
@@ -720,15 +989,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:5000/players",
-							"protocol": "http",
+							"raw": "https://orangecup.herokuapp.com/players",
+							"protocol": "https",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"orangecup",
+								"herokuapp",
+								"com"
 							],
-							"port": "5000",
 							"path": [
 								"players"
 							]
@@ -737,15 +1004,15 @@
 					"response": []
 				},
 				{
-					"name": "http://127.0.0.1:5000/players/create",
+					"name": "/players/create",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
-								"id": "79808d94-4493-4b05-a895-f523738f8d1c",
+								"id": "5ebfd0a8-cc2a-4127-9cfb-ac6187e87e78",
 								"exec": [
-									"pm.test(\"Status code is 401\", function () {",
-									"    pm.response.to.have.status(401);",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
 									"});",
 									""
 								],
@@ -761,15 +1028,13 @@
 							"raw": "{\n\"name\":\"FirstName\",\n\"surname\":\"Surname\",\n\"nationality\":\"DE\",\n\"year\":1981,\n\"gender\":\"male\",\n\"weight\":80,\n\"height\":180\n}"
 						},
 						"url": {
-							"raw": "http://127.0.0.1:5000/players/create",
-							"protocol": "http",
+							"raw": "https://orangecup.herokuapp.com/players/create",
+							"protocol": "https",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"orangecup",
+								"herokuapp",
+								"com"
 							],
-							"port": "5000",
 							"path": [
 								"players",
 								"create"
@@ -779,7 +1044,7 @@
 					"response": []
 				},
 				{
-					"name": "http://127.0.0.1:5000/players/1",
+					"name": "/players/1",
 					"event": [
 						{
 							"listen": "test",
@@ -798,15 +1063,13 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:5000/players/1",
-							"protocol": "http",
+							"raw": "https://orangecup.herokuapp.com/players/1",
+							"protocol": "https",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"orangecup",
+								"herokuapp",
+								"com"
 							],
-							"port": "5000",
 							"path": [
 								"players",
 								"1"
@@ -816,15 +1079,15 @@
 					"response": []
 				},
 				{
-					"name": "http://127.0.0.1:5000/settings/create",
+					"name": "/settings/create",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
-								"id": "4e4927f6-3b71-4ce4-87fc-7b512bfb9b65",
+								"id": "beab9386-d454-4b90-9867-5f87edb1fb3a",
 								"exec": [
-									"pm.test(\"Status code is 403\", function () {",
-									"    pm.response.to.have.status(403);",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
 									"});"
 								],
 								"type": "text/javascript"
@@ -839,15 +1102,13 @@
 							"raw": "{\n\"number_of_games_to_win\":6,\n\"number_of_sets_to_win\":3,\n\"advantage\":true,\n\"tiebreak\":true,\n\"points_in_tiebreak\":6,\n\"play_last_set_as_tiebreak\":false,\n\"serve_locked\":true,\n\"tiebreak_difference\":2\n}"
 						},
 						"url": {
-							"raw": "http://127.0.0.1:5000/settings/create",
-							"protocol": "http",
+							"raw": "https://orangecup.herokuapp.com/settings/create",
+							"protocol": "https",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"orangecup",
+								"herokuapp",
+								"com"
 							],
-							"port": "5000",
 							"path": [
 								"settings",
 								"create"
@@ -857,7 +1118,7 @@
 					"response": []
 				},
 				{
-					"name": "http://127.0.0.1:5000/settings/1",
+					"name": "/settings/1",
 					"event": [
 						{
 							"listen": "test",
@@ -876,15 +1137,13 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:5000/settings/1",
-							"protocol": "http",
+							"raw": "https://orangecup.herokuapp.com/settings/1",
+							"protocol": "https",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"orangecup",
+								"herokuapp",
+								"com"
 							],
-							"port": "5000",
 							"path": [
 								"settings",
 								"1"
@@ -894,7 +1153,7 @@
 					"response": []
 				},
 				{
-					"name": "http://127.0.0.1:5000/matches/create",
+					"name": "/matches/create",
 					"event": [
 						{
 							"listen": "test",
@@ -914,18 +1173,16 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\"player_1_id\":2,\n\"player_2_id\":3,\n\"player_3_id\":null,\n\"player_4_id\":null,\n\"matchfile\":\"fake json string for testing\",\n\"start_time\":\"2016-06-22 19:10:25-07\",\n\"end_time\":null,\n\"type\":1,\n\"settings_id\":2,\n\"finish_state\":0\n}"
+							"raw": "{\n\"player_1_id\":1,\n\"player_2_id\":2,\n\"player_3_id\":null,\n\"player_4_id\":null,\n\"matchfile\":\"fake json string for testing\",\n\"start_time\":\"2016-06-22 19:10:25-07\",\n\"end_time\":null,\n\"type\":1,\n\"settings_id\":2,\n\"finish_state\":0\n}"
 						},
 						"url": {
-							"raw": "http://127.0.0.1:5000/matches/create",
-							"protocol": "http",
+							"raw": "https://orangecup.herokuapp.com/matches/create",
+							"protocol": "https",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"orangecup",
+								"herokuapp",
+								"com"
 							],
-							"port": "5000",
 							"path": [
 								"matches",
 								"create"
@@ -935,7 +1192,7 @@
 					"response": []
 				},
 				{
-					"name": "http://127.0.0.1:5000/matches/1",
+					"name": "/matches/1",
 					"event": [
 						{
 							"listen": "test",
@@ -954,15 +1211,13 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:5000/matches/1",
-							"protocol": "http",
+							"raw": "https://orangecup.herokuapp.com/matches/1",
+							"protocol": "https",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"orangecup",
+								"herokuapp",
+								"com"
 							],
-							"port": "5000",
 							"path": [
 								"matches",
 								"1"
@@ -972,7 +1227,7 @@
 					"response": []
 				},
 				{
-					"name": "http://127.0.0.1:5000/players/3/matches",
+					"name": "/players/3/matches",
 					"event": [
 						{
 							"listen": "test",
@@ -996,7 +1251,128 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:5000/players/2/matches",
+							"raw": "https://orangecup.herokuapp.com/players/2/matches",
+							"protocol": "https",
+							"host": [
+								"orangecup",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"players",
+								"2",
+								"matches"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/settings",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "20cf05ae-0a73-4d4d-af75-5d18131e46ea",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5000/settings",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"settings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/players/search",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "20cf05ae-0a73-4d4d-af75-5d18131e46ea",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"value contains players array\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.players).to.be.an('array')",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"search_term\":\"kri\"}"
+						},
+						"url": {
+							"raw": "https://orangecup.herokuapp.com/players/search",
+							"protocol": "https",
+							"host": [
+								"orangecup",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"players",
+								"search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/players/2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a4f4509a-056d-442c-8809-c8022ff68a2c",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"name\":\"Vedrana\",\n\"year\":1988\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/players/5",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -1007,10 +1383,10 @@
 							"port": "5000",
 							"path": [
 								"players",
-								"2",
-								"matches"
+								"5"
 							]
-						}
+						},
+						"description": "Update existing player with new data"
 					},
 					"response": []
 				}
@@ -1021,7 +1397,7 @@
 				"oauth2": [
 					{
 						"key": "accessToken",
-						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ikxza1ZQMGtWOXpMSGhUU1pzSDRXeCJ9.eyJpc3MiOiJodHRwczovL29yYW5nZWN1cC5hdXRoMC5jb20vIiwic3ViIjoiZ29vZ2xlLW9hdXRoMnwxMTE3OTMyNzA5MTk5MDIxODI0MzciLCJhdWQiOlsib3JhbmdlIiwiaHR0cHM6Ly9vcmFuZ2VjdXAuYXV0aDAuY29tL3VzZXJpbmZvIl0sImlhdCI6MTU4NzcwNDk4OSwiZXhwIjoxNTg3NzEyMTg5LCJhenAiOiJmWFdmNXJlTmx5TVNncTRUanhRMjN2dmh0WUZyWnpzViIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6bWF0Y2hlcyIsImRlbGV0ZTpwbGF5ZXJzIiwiZGVsZXRlOnNldHRpbmdzIiwicmVhZDptYXRjaGVzIiwicmVhZDpwbGF5ZXJzIiwicmVhZDpzZXR0aW5ncyIsIndyaXRlOm1hdGNoZXMiLCJ3cml0ZTpwbGF5ZXJzIiwid3JpdGU6c2V0dGluZ3MiXX0.jmce8wwNdsNo3xWSdhvqHEyKsbWYxNpMzzCbCswnhawRxDhEMHk-TifslD3jMwcs77X_89isVsed4upT2yQtSu_xpK2GskInTdtxffycoctD-d9AFpu67NphPtZDUZjw_ay0hhYaLrmvLBCelTkS6u4P2TuxpeL3rI5nb_zUhFaqwsB8a4kkUvAk0UOhX1jxLCXxyifjZH4KtQ7MtkFpG3hZ842QYlo12wv5N3frfenFlVHNQMGC2Y2Jr1dAqD_RUQDYjE0babTbukSxjRoYXLmx2okrU3K-o--EoarztWOgFjSSq_b6LkrZHiSBnoAkx7YNU3nC9FIRpbifCDx6cA",
+						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ikxza1ZQMGtWOXpMSGhUU1pzSDRXeCJ9.eyJpc3MiOiJodHRwczovL29yYW5nZWN1cC5hdXRoMC5jb20vIiwic3ViIjoiZ29vZ2xlLW9hdXRoMnwxMTE3OTMyNzA5MTk5MDIxODI0MzciLCJhdWQiOlsib3JhbmdlIiwiaHR0cHM6Ly9vcmFuZ2VjdXAuYXV0aDAuY29tL3VzZXJpbmZvIl0sImlhdCI6MTU4NzgwNDczOSwiZXhwIjoxNTg3ODExOTM5LCJhenAiOiJmWFdmNXJlTmx5TVNncTRUanhRMjN2dmh0WUZyWnpzViIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6bWF0Y2hlcyIsImRlbGV0ZTpwbGF5ZXJzIiwiZGVsZXRlOnNldHRpbmdzIiwicmVhZDptYXRjaGVzIiwicmVhZDpwbGF5ZXJzIiwicmVhZDpzZXR0aW5ncyIsIndyaXRlOm1hdGNoZXMiLCJ3cml0ZTpwbGF5ZXJzIiwid3JpdGU6c2V0dGluZ3MiXX0.DAsrfzVi1KoMfa3nBP_SMDw71NS170Hk00UhsTBd7Cc4RNlLhoirTb6sDvTOkNNnhGFOJkChKK6Ug-kBNDV_xw8tNwo5Gp60W6Kg3q4gE_meHR3LVyqWpv06H-w_jZPOCyZ1dlKpx45edQT2a_qjasHMjCRPoVmxKm7Vx14H01gE9_MEyium-VM7gd06iZ0aSLSMXcHs9ma_vgP9dVIe4OG0jmCgVDosFR5If7kdBra4gOWYmdUh3EDRLYKwdU1GIhbv5_hwJHxGc_uVheKWJ1grOcE8EqXxG10zmnHtMQ7h5CxLa3j7Q5EO4SjVEuqQ-Dn4IAJcrJ7M9hF_heLapQ",
 						"type": "string"
 					},
 					{
