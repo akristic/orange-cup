@@ -18,22 +18,20 @@ Once you have your virtual environment setup and running, install dependencies b
 ```bash
 pip install -r requirements.txt
 ```
+##Create database
+ - create database in psql with name "orange"
 
 ## Running the server
-
 From within the root directory first ensure you are working using your created virtual environment.
-
 To run the server, execute:
 
 ```bash
-export FLASK_APP=flaskr
+export FLASK_APP=app
 export FLASK_ENV=development
 flask run
 ```
-
 Setting the `FLASK_ENV` variable to `development` will detect file changes and restart the server automatically.
 
-Setting the `FLASK_APP` variable to `flaskr` directs flask to use the `flaskr` directory and the `__init__.py` file to find the application.
 
 # For testing endpoints in postman you will need VALID token.
 This token will be provided to Udacity in submission. (2 Tokens. One for User and one for Admin)
@@ -42,7 +40,7 @@ To get your own tokens you will need to make your own account on Auth0. And in a
 AUTH0_DOMAIN = 'orangecup.auth0.com'
 API_AUDIENCE = 'orange'
 to values from your account.
-There are 2 roles setup:
+There are 2 roles setup in Auth0:
  - User with permissions:
     - read:matches
     - read:players
@@ -62,6 +60,10 @@ read:players and read:matches is actually not needed because currently everyone 
     - delete:players
     - delete:settings
 
+To login create link like this:
+https://orangecup.auth0.com/authorize?audience=orange&response_type=token&client_id=fXWf5reNlyMSgq4TjxQ23vvhtYFrZzsV&redirect_uri=https://localhost:8080/login-results
+but change values with ones from your account
+
 After successfully login you will be redirected to login-result page but because there is no frontend you will land on This site can’t be reached page. Just copy token from url created in your browser. It will look something like this:
 ```
 eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ikxza1ZQMGtWOXpMSGhUU1pzSDRXeCJ9.eyJpc3MiOiJodHRwczovL29yYW5nZWN1cC5hdXRoMC5jb20vIiwic3ViIjoiZ29vZ2xlLW9hdXRoMnwxMTE3OTMyNzA5MTk5MDIxODI0MzciLCJhdWQiOlsib3JhbmdlIiwiaHR0cHM6Ly9vcmFuZ2VjdXAuYXV0aDAuY29tL3VzZXJpbmZvIl0sImlhdCI6MTU4NzcwNDk4OSwiZXhwIjoxNTg3NzEyMTg5LCJhenAiOiJmWFdmNXJlTmx5TVNncTRUanhRMjN2dmh0WUZyWnpzViIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6bWF0Y2hlcyIsImRlbGV0ZTpwbGF5ZXJzIiwiZGVsZXRlOnNldHRpbmdzIiwicmVhZDptYXRjaGVzIiwicmVhZDpwbGF5ZXJzIiwicmVhZDpzZXR0aW5ncyIsIndyaXRlOm1hdGNoZXMiLCJ3cml0ZTpwbGF5ZXJzIiwid3JpdGU6c2V0dGluZ3MiXX0.jmce8wwNdsNo3xWSdhvqHEyKsbWYxNpMzzCbCswnhawRxDhEMHk-TifslD3jMwcs77X_89isVsed4upT2yQtSu_xpK2GskInTdtxffycoctD-d9AFpu67NphPtZDUZjw_ay0hhYaLrmvLBCelTkS6u4P2TuxpeL3rI5nb_zUhFaqwsB8a4kkUvAk0UOhX1jxLCXxyifjZH4KtQ7MtkFpG3hZ842QYlo12wv5N3frfenFlVHNQMGC2Y2Jr1dAqD_RUQDYjE0babTbukSxjRoYXLmx2okrU3K-o--EoarztWOgFjSSq_b6LkrZHiSBnoAkx7YNU3nC9FIRpbifCDx6cA
@@ -69,4 +71,4 @@ eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ikxza1ZQMGtWOXpMSGhUU1pzSDRXeCJ9.eyJ
 # Testing with Postman
 Import collection in postman from file: orange-cup-endpoint-test-collection.postman_collection
 In postman under Authorization tab select Type of authorization to OAuth 2.0. Use newly created token and paste it in Access Token box.
-Important: You must have database "orange" created and populated with some dummy data. Run all post test under admin folder to populate database. Do this few times to have few rows in database.
+Important: You must have database "orange" created and populated with some dummy data. Run all POST test under admin folder to populate database. Do this 3 or more times to have at least 3 rows in database. First create 3 players, than 3 settings and than 3 matches. Order is important because you can't create matches without valid player and settings primary key.
