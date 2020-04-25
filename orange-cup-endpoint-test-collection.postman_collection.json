@@ -429,8 +429,8 @@
 							"script": {
 								"id": "a4f4509a-056d-442c-8809-c8022ff68a2c",
 								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
+									"pm.test(\"Status code is 401\", function () {",
+									"    pm.response.to.have.status(401);",
 									"});"
 								],
 								"type": "text/javascript"
@@ -445,15 +445,13 @@
 							"raw": "{\n\"name\":\"Vedrana\",\n\"year\":1988\n}"
 						},
 						"url": {
-							"raw": "http://127.0.0.1:5000/players/1",
-							"protocol": "http",
+							"raw": "https://orangecup.herokuapp.com/players/1",
+							"protocol": "https",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"orangecup",
+								"herokuapp",
+								"com"
 							],
-							"port": "5000",
 							"path": [
 								"players",
 								"1"
@@ -903,15 +901,13 @@
 							"raw": "{\n\"name\":\"Vedrana\",\n\"year\":1988\n}"
 						},
 						"url": {
-							"raw": "http://127.0.0.1:5000/players/1",
-							"protocol": "http",
+							"raw": "https://orangecup.herokuapp.com/players/1",
+							"protocol": "https",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"orangecup",
+								"herokuapp",
+								"com"
 							],
-							"port": "5000",
 							"path": [
 								"players",
 								"1"
@@ -1372,18 +1368,16 @@
 							"raw": "{\n\"name\":\"Vedrana\",\n\"year\":1988\n}"
 						},
 						"url": {
-							"raw": "http://127.0.0.1:5000/players/5",
-							"protocol": "http",
+							"raw": "https://orangecup.herokuapp.com/players/2",
+							"protocol": "https",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"orangecup",
+								"herokuapp",
+								"com"
 							],
-							"port": "5000",
 							"path": [
 								"players",
-								"5"
+								"2"
 							]
 						},
 						"description": "Update existing player with new data"
